@@ -368,7 +368,15 @@ const PROXY_CONFIG = {
     "changeOrigin": true,
     "logLevel": "debug",
     "pathRewrite":{"^/f1Endpoint" : ""}
+  },
+  "/dgraph-http-Endpoint/*": {
+    "target": "http://192.168.99.179:30475",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite":{"^/dgraph-http-Endpoint" : ""}
   }
+  
 }
 
 // Add the authorization header to request using the value from the TCSTKSESSION cookie

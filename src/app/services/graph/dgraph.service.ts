@@ -79,6 +79,7 @@ export class DgraphService implements GraphService {
 
   // Defined as a proxy.  (i.e. http://137.117.38.255:8080)
   private dgraphUrl = '/airEndpoint/dgraph-alpha-http';
+  //TODO: Uncomment me for new installation private dgraphUrl = '/dgraph-http-Endpoint';
 
   /**
    * 
