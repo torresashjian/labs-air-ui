@@ -242,15 +242,19 @@ export class IotPipelineComponent implements OnInit {
         await engine.process(this.editor.toJSON());
       })
     );
+    //Translate node to appear where the user right clicked 
     this.editor.on(
-      [
-        "contextmenu"
+      "contextmenu",
+    ({e}) => {
+      const xcor= e.clientX;
+      const ycor= e.clientY;
+      //console.log(xcor,ycor);
+      this.editor.on("nodecreated", node  => {
+        this.editor.view.nodes.get(node).translate(xcor+100,ycor-200);
+        })
+      });
+//    this.editor.on("click", ({e}) => {console.log(e.clientX,e.clientY);})
 
-      ],
-      (async () => {
-       console.log("event hapenned")
-      })
-    );
     this.editor.trigger("process");
     this.editor.view.resize();
 
