@@ -7,10 +7,17 @@ import { IotPipelineComponent } from 'src/app/components/iot-pipeline/iot-pipeli
 import { IotDataPipelineComponent } from 'src/app/components/iot-data-pipeline/iot-data-pipeline.component';
 import { IotEdgeDataPipelineComponent } from 'src/app/components/iot-edge-data-pipeline/iot-edge-data-pipeline.component';
 import { IotGatewayDashboardComponent } from 'src/app/components/iot-gateway-dashboard/iot-gateway-dashboard.component';
+import { ActivatedRouteSnapshot, NavigationEnd, Router, ActivatedRoute} from '@angular/router';
+import { Gateway } from 'src/app/shared/models/iot.model';
+import { Params } from '@angular/router';
+import { Observable } from 'rxjs';
 
 export const HOME_ROUTE = 'splash';
-
-export const STARTER_APP_ROUTES =
+let router:Router;
+let params: Observable<Params>;
+let snapshot: ActivatedRouteSnapshot;
+let route: ActivatedRoute;
+export const STARTER_APP_ROUTES=
 [
   {
     path: 'home',
@@ -23,7 +30,8 @@ export const STARTER_APP_ROUTES =
       },
       {
         path: 'gatewayendpoint/:gatewayId',
-        component: IotGatewayEndpointComponent
+        component: IotGatewayEndpointComponent,
+        data: {breadcrumb: ['Gateways', 'Endpoints']}
         },
       {
         path: 'device-details/:gatewayId',
@@ -32,19 +40,23 @@ export const STARTER_APP_ROUTES =
       },
       {
         path: 'pipeline/:gatewayId',
-        component: IotPipelineComponent
+        component: IotPipelineComponent,
+        data: {breadcrumb: ['Gateways', 'Pipelines']}
       },
       {
         path: 'datapipeline/:gatewayId',
-        component: IotDataPipelineComponent
+        component: IotDataPipelineComponent,
+        data: {breadcrumb: ['Gateways']}
       },
       {
         path: 'gatewaydashboard',
-        component: IotGatewayDashboardComponent
+        component: IotGatewayDashboardComponent,
+        data: {breadcrumb: ['Gateways']}
       },
       {
         path: 'edgedatapipeline/:gatewayId',
-        component: IotEdgeDataPipelineComponent
+        component: IotEdgeDataPipelineComponent,
+        data: {breadcrumb: ['Gateways']}
       }
       
       

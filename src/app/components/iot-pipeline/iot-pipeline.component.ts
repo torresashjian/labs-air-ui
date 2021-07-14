@@ -36,6 +36,7 @@ import { NotificationPipeComponent } from "../rete/components/notification-pipe-
 import { FlogoFlowComponent } from "../rete/components/flogo-flow-component";
 import { RestServiceComponent } from "../rete/components/rest-service-component";
 import { NodePrimaryComponent } from "../rete/nodes/node-primary/node-primary.component";
+
 import { pipe } from 'rxjs';
 import { LogLevel } from '@tibco-tcstk/tc-core-lib';
 import { stringify } from '@angular/compiler/src/util';
@@ -212,16 +213,14 @@ export class IotPipelineComponent implements OnInit {
       new ErrorHandlerComponent()
     ];
 
-    this.editor = new NodeEditor("demo@0.2.0", container);
+    this.editor = new NodeEditor("demo@0.1.0", container);
     console.log("conatiner is here", this.editor);
-  
-
     this.editor.use(ConnectionPlugin);
     console.log("AngularRenderPlugin", AngularRenderPlugin);
     this.editor.use(AngularRenderPlugin, { component: NodePrimaryComponent });
     this.editor.use(ContextMenuPlugin);
 
-    const engine = new Engine("demo@0.2.0");
+    const engine = new Engine("demo@0.1.0");
 
     components.map(c => {
       this.editor.register(c);
@@ -234,14 +233,26 @@ export class IotPipelineComponent implements OnInit {
         "nodecreated",
         "connectioncreated",
         "connectionremoved"
+
       ],
       (async () => {
+        if (engine.silent) return;
         console.log("Editor action executed");
-
-        // await engine.abort();
-        // await engine.process(this.editor.toJSON());
-      }) as any
+        await engine.abort();
+        await engine.process(this.editor.toJSON());
+      })
     );
+    this.editor.on(
+      [
+        "contextmenu"
+
+      ],
+      (async () => {
+       console.log("event hapenned")
+      })
+    );
+    this.editor.trigger("process");
+    this.editor.view.resize();
 
     // this.editor.on(
     //   [
@@ -2639,5 +2650,13 @@ export class IotPipelineComponent implements OnInit {
 
     return propertiesObj;
   }
+}
+
+function JsRenderPlugin(JsRenderPlugin: any) {
+  throw new Error('Function not implemented.');
+}
+
+function TaskPlugin(TaskPlugin: any) {
+  throw new Error('Function not implemented.');
 }
 
