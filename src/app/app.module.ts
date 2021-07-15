@@ -66,6 +66,7 @@ import { InferencingComponent } from './components/iot-edge-data-pipeline/infere
 import { RulesComponent } from './components/iot-edge-data-pipeline/rules/rules.component';
 import { IotGatewayDashboardComponent } from './components/iot-gateway-dashboard/iot-gateway-dashboard.component';
 import { SpotfireDashboardComponent } from './components/spotfire-dashboard/spotfire-dashboard.component';
+import { IotInfraDeployerComponent } from './components/iot-infra-deployer/iot-infra-deployer.component';
 
 
 @NgModule({
@@ -120,7 +121,8 @@ import { SpotfireDashboardComponent } from './components/spotfire-dashboard/spot
     InferencingComponent,
     RulesComponent, 
     IotGatewayDashboardComponent,
-    SpotfireDashboardComponent
+    SpotfireDashboardComponent,
+    IotInfraDeployerComponent
 
 
   ],

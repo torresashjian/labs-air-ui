@@ -11,6 +11,7 @@ import { ActivatedRouteSnapshot, NavigationEnd, Router, ActivatedRoute} from '@a
 import { Gateway } from 'src/app/shared/models/iot.model';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
+import { IotInfraDeployerComponent } from 'src/app/components/iot-infra-deployer/iot-infra-deployer.component';
 
 export const HOME_ROUTE = 'splash';
 let router:Router;
@@ -51,6 +52,11 @@ export const STARTER_APP_ROUTES=
       {
         path: 'gatewaydashboard',
         component: IotGatewayDashboardComponent,
+        data: {breadcrumb: ['Gateways']}
+      },
+      {
+        path: 'infradeployer',
+        component: IotInfraDeployerComponent,
         data: {breadcrumb: ['Gateways']}
       },
       {

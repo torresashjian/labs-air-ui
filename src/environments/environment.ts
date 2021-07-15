@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   dgraphUrl: 'http://192.168.99.102:30779',
+  // dgraphUrl: 'http://localhost:8043/http://aa412612f077b4edd99b008a1530da02-1287192627.us-west-2.elb.amazonaws.com/dgraph-alpha-http',
   f1EndpointUrl: 'http://54.81.13.248:5408',
-  airEndpointUrl:'http://a77d5e583ea66440bb0e26be76aec6bf-1483924641.us-west-2.elb.amazonaws.com',
+  airEndpointUrl:'http://aa412612f077b4edd99b008a1530da02-1287192627.us-west-2.elb.amazonaws.com',
   remoteGatewayUrl: 'http://localhost:8043',
   localGatewayUrl: 'https://localhost:8443'
 };

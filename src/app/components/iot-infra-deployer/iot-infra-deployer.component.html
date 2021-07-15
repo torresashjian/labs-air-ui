@@ -1,0 +1,138 @@
+<div fxLayout="column" fxFlex="grow" style="padding-left: 20px; padding-right: 200px; margin-top: 10px;">
+
+   <div fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="15px" style="min-height: 300px;">
+        <mat-card fxFlex [formGroup]="deployerForm">
+            <mat-card-header>
+                <div mat-card-avatar class="infra-deployer-image"></div>
+                <mat-card-title>Infrastructure Deployer</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <div fxLayout="row" fxLayoutAlign="space-around" style="width: 100%;" fxLayoutGap="15px">
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>Deployer Type</mat-label>
+                        <mat-select formControlName="deployerType">
+                            <mat-option *ngFor="let item of deployerTypes;" [value]="item.value">
+                                {{item.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-checkbox fxFlex="1 1 18%" formControlName="deployEdgex" style="margin-right: 20px;">Deploy Edgex
+                    </mat-checkbox>
+
+                    <mat-checkbox fxFlex="1 1 18%" formControlName="deployAIRBase">Deploy AIR Base
+                    </mat-checkbox>
+                </div>
+
+                <div fxLayout="row" style="width: 100%;" fxLayoutGap="15px">
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>Deployer URL</mat-label>
+                        <input matInput [readonly]=false formControlName="deployerURL">
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>Deployer Auth</mat-label>
+                        <input matInput placeholder="Enter deployer auth" [readonly]=false
+                            [type]="hideAuth ? 'password' : 'text'" formControlName="gatewayUsername">
+                        <button mat-icon-button matSuffix (click)="hideAuth = !hideAuth"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideAuth">
+                            <mat-icon>{{hideAuth ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    
+                </div>
+
+                <div fxLayout="row" style="width: 100%;" fxLayoutGap="15px">
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>Gaateway Platform</mat-label>
+                        <mat-select formControlName="gatewayPlatform">
+                            <mat-option *ngFor="let item of platformTypes;" [value]="item.value">
+                                {{item.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>Gateway Id</mat-label>
+                        <input matInput [readonly]=false formControlName="gatewayId">
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>Gateway Description</mat-label>
+                        <input matInput [readonly]=false formControlName="gatewayDescription">
+                    </mat-form-field>
+
+                    
+                </div>
+               
+                <div fxLayout="row" style="width: 100%;" fxLayoutGap="15px">
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>Gateway Hostname</mat-label>
+                        <input matInput [readonly]=false formControlName="gatewayHostname">
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>Gateway Latitude</mat-label>
+                        <input matInput [readonly]=false formControlName="gatewayLatitude">
+                    </mat-form-field>
+                   
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>Gateway Longitude</mat-label>
+                        <input matInput [readonly]=false formControlName="gatewayLongitude">
+                    </mat-form-field>
+                    
+                </div>
+
+                <div fxLayout="row" style="width: 100%;" fxLayoutGap="15px">
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>AIR MQTT Hostname</mat-label>
+                        <input matInput [readonly]=false formControlName="airMqttHosname">
+                    </mat-form-field>
+                   
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>AIR MQTT Port</mat-label>
+                        <input matInput [readonly]=false formControlName="airMqttPort">
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>AIR MQTT Topic</mat-label>
+                        <input matInput [readonly]=false formControlName="airMqttDataTopic">
+                    </mat-form-field>
+                    
+                </div>
+
+                <div fxLayout="row" style="width: 100%;" fxLayoutGap="15px">
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>AIR MQTT Username</mat-label>
+                        <input matInput [readonly]=false formControlName="airMqttUser">
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="1 1 18%" appearance="outline">
+                        <mat-label>AIR MQTT Password</mat-label>
+                        <input matInput placeholder="Enter MQTT Password" [readonly]=false
+                            [type]="hideMQTTPass ? 'password' : 'text'" formControlName="airMqttPassword">
+                        <button mat-icon-button matSuffix (click)="hideMQTTPass = !hideMQTTPass"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideMQTTPass">
+                            <mat-icon>{{hideMQTTPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    
+                </div>
+
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="deploy()" color="primary">Deploy</button>
+                <button mat-raised-button (click)="undeploy()" color="primary">Undeploy</button>
+
+            </mat-card-actions>
+
+        </mat-card>
+    </div>
+</div>

@@ -138,6 +138,29 @@ export class FlogoDeployService {
         catchError(this.handleError<string>('undeploy'))
       );
   }
+  deployInfra(request): Observable<any> {
+
+    const url = `/f1Endpoint/f1/deployer/deploy/Air_ORRA_RTSF/orra_rtsf/001`;
+
+    console.log("Calling buildF1 with url:", url);
+
+    return this.http.post<string>(url, request, this.httpOptions)
+      .pipe(
+        tap(_ => console.log('Deployed Infra')),
+        catchError(this.handleError<string>('deployInfra'))
+      );
+  }
+
+  undeployInfra(request): Observable<any> {
+
+    const url = `/f1Endpoint/f1/deployer/undeploy/Air_ORRA_RTSF/orra_rtsf/001`;
+
+    return this.http.post<string>(url, request, this.httpOptions)
+      .pipe(
+        tap(_ => console.log('Undeploy Infra')),
+        catchError(this.handleError<string>('undeployInfra'))
+      );
+  }
 
   /**
     * Handle Http operation that failed.
