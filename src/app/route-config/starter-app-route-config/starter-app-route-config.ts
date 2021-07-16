@@ -32,17 +32,17 @@ export const STARTER_APP_ROUTES=
       {
         path: 'gatewayendpoint/:gatewayId',
         component: IotGatewayEndpointComponent,
-        data: {breadcrumb: ['Gateways', 'Endpoints']}
+        data: {breadcrumb: ['Gateways', 'Endpoints', 'Endpoints']}
         },
       {
         path: 'device-details/:gatewayId',
         component: IotGatewayDetailsComponent,
-        data: { breadcrumb: ['Gateways','Devices']}
+        data: { breadcrumb: ['Gateways','Devices', 'Devices']}
       },
       {
         path: 'pipeline/:gatewayId',
         component: IotPipelineComponent,
-        data: {breadcrumb: ['Gateways', 'Pipelines']}
+        data: {breadcrumb: ['Gateways', 'Pipelines', 'Pipelines']}
       },
       {
         path: 'datapipeline/:gatewayId',

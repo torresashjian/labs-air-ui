@@ -38,15 +38,10 @@ export class BreadcrumbsService {
     if (route) {
       if (route.data.breadcrumb) {
         //add  the device name when selecting the device
-        if (s.length>0 && route.data.breadcrumb[route.data.breadcrumb.length-1]!=s){
-        route.data.breadcrumb.push(s);
+        if (s.length>0){
+          route.data.breadcrumb.pop();
+          route.data.breadcrumb.push(s);
         }
-        // let parsedCrumbs = this.checkForGatewayID(route.data.breadcrumb);
-        // this.path.next(parsedCrumbs);
-        //if (event) {
-          //this.checkForID(event['url']);
-       // }
-
         this.path.next(route.data.breadcrumb);
       }
       // go to the next element if not found
@@ -54,12 +49,5 @@ export class BreadcrumbsService {
         this.setCrumbs(route.firstChild,s);
       }
     }
-  }
-
-  // should find the gateway ID and display it on the breadcrumb
-  private checkForID(path: string) {
-    // path should be the end of the URL.
-
-    return path;
   }
 }
