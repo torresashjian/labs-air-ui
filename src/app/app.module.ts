@@ -67,6 +67,7 @@ import { RulesComponent } from './components/iot-edge-data-pipeline/rules/rules.
 import { IotGatewayDashboardComponent } from './components/iot-gateway-dashboard/iot-gateway-dashboard.component';
 import { SpotfireDashboardComponent } from './components/spotfire-dashboard/spotfire-dashboard.component';
 import { IotInfraDeployerComponent } from './components/iot-infra-deployer/iot-infra-deployer.component';
+import { IotNotificationsComponent } from './components/iot-notifications/iot-notifications.component';
 
 
 @NgModule({
@@ -122,7 +123,8 @@ import { IotInfraDeployerComponent } from './components/iot-infra-deployer/iot-i
     RulesComponent, 
     IotGatewayDashboardComponent,
     SpotfireDashboardComponent,
-    IotInfraDeployerComponent
+    IotInfraDeployerComponent,
+    IotNotificationsComponent
 
 
   ],
