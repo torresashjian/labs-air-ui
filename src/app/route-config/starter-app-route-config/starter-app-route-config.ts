@@ -13,6 +13,7 @@ import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IotInfraDeployerComponent } from 'src/app/components/iot-infra-deployer/iot-infra-deployer.component';
 import { IotNotificationsComponent } from 'src/app/components/iot-notifications/iot-notifications.component';
+import { IotSimulatorComponent } from 'src/app/components/iot-simulator/iot-simulator.component';
 
 export const HOME_ROUTE = 'splash';
 let router:Router;
@@ -63,6 +64,11 @@ export const STARTER_APP_ROUTES=
       {
         path: 'notifications',
         component: IotNotificationsComponent,
+        data: {breadcrumb: ['Gateways']}
+      },
+      {
+        path: 'simulator',
+        component: IotSimulatorComponent,
         data: {breadcrumb: ['Gateways']}
       },
       {

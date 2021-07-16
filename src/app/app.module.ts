@@ -68,6 +68,7 @@ import { IotGatewayDashboardComponent } from './components/iot-gateway-dashboard
 import { SpotfireDashboardComponent } from './components/spotfire-dashboard/spotfire-dashboard.component';
 import { IotInfraDeployerComponent } from './components/iot-infra-deployer/iot-infra-deployer.component';
 import { IotNotificationsComponent } from './components/iot-notifications/iot-notifications.component';
+import { IotSimulatorComponent } from './components/iot-simulator/iot-simulator.component';
 
 
 @NgModule({
@@ -124,7 +125,8 @@ import { IotNotificationsComponent } from './components/iot-notifications/iot-no
     IotGatewayDashboardComponent,
     SpotfireDashboardComponent,
     IotInfraDeployerComponent,
-    IotNotificationsComponent
+    IotNotificationsComponent,
+    IotSimulatorComponent
 
 
   ],
