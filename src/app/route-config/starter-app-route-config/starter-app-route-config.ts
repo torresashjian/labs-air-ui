@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 import { IotInfraDeployerComponent } from 'src/app/components/iot-infra-deployer/iot-infra-deployer.component';
 import { IotNotificationsComponent } from 'src/app/components/iot-notifications/iot-notifications.component';
 import { IotSimulatorComponent } from 'src/app/components/iot-simulator/iot-simulator.component';
+import { IotDashboardComponent } from 'src/app/components/iot-dashboard/iot-dashboard.component';
 
 export const HOME_ROUTE = 'splash';
 let router:Router;
@@ -29,6 +30,11 @@ export const STARTER_APP_ROUTES=
       {
         path: 'gateway',
         component: IotGatewayComponent,
+        data: { breadcrumb: ['Gateways'] }
+      },
+      {
+        path: 'iotdashboard',
+        component: IotDashboardComponent,
         data: { breadcrumb: ['Gateways'] }
       },
       {
