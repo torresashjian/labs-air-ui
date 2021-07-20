@@ -70,6 +70,8 @@ import { IotInfraDeployerComponent } from './components/iot-infra-deployer/iot-i
 import { IotNotificationsComponent } from './components/iot-notifications/iot-notifications.component';
 import { IotSimulatorComponent } from './components/iot-simulator/iot-simulator.component';
 import { IotDashboardComponent } from './components/iot-dashboard/iot-dashboard.component';
+import { InfraRegistrationComponent } from './components/iot-infra-deployer/infra-registration/infra-registration.component';
+import { InfraDeployerComponent } from './components/iot-infra-deployer/infra-deployer/infra-deployer.component';
 
 
 @NgModule({
@@ -128,7 +130,10 @@ import { IotDashboardComponent } from './components/iot-dashboard/iot-dashboard.
     IotInfraDeployerComponent,
     IotNotificationsComponent,
     IotSimulatorComponent,
-    IotDashboardComponent
+    IotDashboardComponent,
+    InfraRegistrationComponent,
+    InfraDeployerComponent
+
 
 
   ],
