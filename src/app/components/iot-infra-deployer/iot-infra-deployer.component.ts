@@ -6,7 +6,10 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@ang
 
 import { GraphService } from '../../services/graph/graph.service';
 import { FlogoDeployService } from '../../services/deployment/flogo-deploy.service';
-import { Gateway } from '../../shared/models/iot.model';
+import { Gateway, Pipeline } from '../../shared/models/iot.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
+
 
 export interface SelectItem {
   value: string;
@@ -24,6 +27,12 @@ export class IotInfraDeployerComponent implements OnInit {
   hideAuth = true;
   hideMQTTPass = true;
   deployerForm: FormGroup;
+  gatewayId = "";
+  pipelinesDataSource = new MatTableDataSource<Pipeline>();
+  pipelineDisplayedColumns: string[] = ['id', 'name', 'pipelineType', 'status', 'created', 'modified'];
+  pipelineSelection = new SelectionModel<Pipeline>(false, []);
+
+
 
   deployerTypes: SelectItem[] = [
     { value: 'AIR', viewValue: 'AIR Deployer' },
@@ -39,13 +48,14 @@ export class IotInfraDeployerComponent implements OnInit {
     private flogoDeployService: FlogoDeployService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: MatSnackBar,) {
 
   }
 
   ngOnInit(): void {
 
     this.createForm();
+    this.gatewayId = this.route.snapshot.paramMap.get('gatewayId');
   }
 
 
