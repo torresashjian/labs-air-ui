@@ -8,13 +8,13 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY package.json /app
+COPY package*.json ./
 
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps 
 
-COPY . /app
+COPY . .
 
-RUN npm run build --prod
+RUN npm run build --prod --verbose
 
 # Stage 2
 FROM nginx:1.21.0-alpine
