@@ -32,37 +32,44 @@ export class IotHomeCockpitComponent {
     ];
 
     deviceRoutes: ROUTE[] = [
+        // {
+        //     icon: 'device',
+        //     route: '/starterApp/home/device',
+        //     title: 'Devices',
+        //     custom: true
+        // }, {
+        //     icon: 'devicedashboard',
+        //     route: '/starterApp/home/deviceprofile',
+        //     title: 'Device Profiles',
+        //     custom: true
+        // }, {
+        //     icon: 'provisioning',
+        //     route: '/starterApp/home/deviceprovision',
+        //     title: 'Device Provisioning',
+        //     custom: true
+        // }, 
         {
-            icon: 'device',
-            route: '/starterApp/home/device',
-            title: 'Devices',
-            custom: true
-        }, {
-            icon: 'devicedashboard',
-            route: '/starterApp/home/deviceprofile',
-            title: 'Device Profiles',
-            custom: true
-        }, {
             icon: 'provisioning',
-            route: '/starterApp/home/deviceprovision',
-            title: 'Device Provisioning',
-            custom: true
-        }, {
-            icon: 'command',
-            route: '/starterApp/home/devicecommand',
-            title: 'Device Commands',
-            custom: true
-        }, {
-            icon: 'rules',
-            route: '/starterApp/home/rules',
-            title: 'Edge Rules',
-            custom: true
-        }, {
-            icon: 'rules',
-            route: '/starterApp/home/mlmodels',
-            title: 'Edge ML Models',
+            route: '/starterApp/home/infradeployer',
+            title: 'Infrastructure Deployer',
             custom: true
         },
+        // {
+        //     icon: 'command',
+        //     route: '/starterApp/home/devicecommand',
+        //     title: 'Device Commands',
+        //     custom: true
+        // }, {
+        //     icon: 'rules',
+        //     route: '/starterApp/home/rules',
+        //     title: 'Edge Rules',
+        //     custom: true
+        // }, {
+        //     icon: 'rules',
+        //     route: '/starterApp/home/mlmodels',
+        //     title: 'Edge ML Models',
+        //     custom: true
+        // },
         {
             icon: 'rules',
             route: '/starterApp/home/simulator',

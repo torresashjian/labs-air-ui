@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { catchError, map, tap, timeout } from 'rxjs/operators';
 
 import { Device, Profile, Service, Subscription, GetCommandResponse, Gateway, Rule, ModelConfig, FiltersConfig } from '../../shared/models/iot.model';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -46,6 +47,8 @@ export class EdgeService {
   private edgexFlogoRulesPath = '/flogorules/api/v1/';
   private edgexInferencingPath = '/inferencing/api/v1/';
   private edgexFilteringPath = '/filtering/api/v1/';
+  private localGatewayUrl = environment.localGatewayUrl;
+  private remoteGatewayUrl = environment.remoteGatewayUrl;
 
   /**
    * 
@@ -67,10 +70,10 @@ export class EdgeService {
     let url = ``;
 
     if (hostname == 'localhost') {
-      url = `/edgex/localgateway${servicePath}${operation}`;
+      url = `${this.localGatewayUrl}${servicePath}${operation}`;
     }
     else {
-      url = `/edgex/remotegateway/https://${hostname}:8443${servicePath}${operation}`;
+      url = `${this.remoteGatewayUrl}/https://${hostname}:8443${servicePath}${operation}`;
     }
 
     console.log("getEdgexURL: ", url);
@@ -88,7 +91,7 @@ export class EdgeService {
 
     let url = ``;
 
-    url = `/edgex/remotegateway/http://${hostname}:${servicePath}${operation}`;
+    url = `${this.remoteGatewayUrl}/http://${hostname}:${servicePath}${operation}`;
 
     console.log("getUnsecuredEdgexURL: ", url);
     return url;
